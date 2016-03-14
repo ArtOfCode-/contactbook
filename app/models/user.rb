@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   validates :password, :confirmation => true #password_confirmation attr
   validates_length_of :password, :minimum => 6, :on => :create
 
-  attr_accessible :username, :email, :password, :password_confirmation
-
   before_save :encrypt_password
   after_save :clear_password
 
