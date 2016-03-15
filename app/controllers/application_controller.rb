@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  after_filter :clear_notice
+
   protected
   def authenticate_user
     if session[:user_id]
@@ -24,5 +26,9 @@ class ApplicationController < ActionController::Base
     else
       return true
     end
+  end
+
+  def clear_notice
+    flash = nil
   end
 end
