@@ -22,6 +22,8 @@ class SessionsController < ApplicationController
 
   def logout
     session[:user_id] = nil
+    flash[:notice] = "You are now logged out."
+    flash[:color] = "valid"
     redirect_to :action => 'login'
   end
 end
