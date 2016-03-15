@@ -9,9 +9,9 @@
 <body>
 
 <% if not flash.nil? %>
-  <div class="notice-<%= flash[:color] %>">
+  <span class="notice-<%= flash[:color] %>">
     <%= flash[:notice] %>
-  </div>
+  </span>
 <% end %>
 
 <%= yield %>
