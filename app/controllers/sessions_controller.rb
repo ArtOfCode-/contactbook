@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     authorized_user = User.authenticate(params[:username_or_email], params[:login_password])
     if authorized_user
       session[:user_id] = authorized_user.id
-      flash[:notice] = "You logged in successfully as #{authorized_user.name}"
+      flash[:notice] = "You logged in successfully as #{authorized_user.username}"
       flash[:color] = "valid"
       redirect_to(:action => 'home')
     else
