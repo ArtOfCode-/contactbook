@@ -32,9 +32,8 @@ span.small {
   font-size: 0.8em;
 }
 
-hr {
-  border: none;
+span.separator {
   height: 1px;
-  background: #777;
-  width: 80%;
+  border-bottom: 1px solid #777;
+  width: 95%;
 }
