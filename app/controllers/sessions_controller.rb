@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   before_filter :save_login_state, :only => [:login, :login_attempt]
 
   def login
-    
+
   end
 
   def login_attempt
@@ -18,5 +18,10 @@ class SessionsController < ApplicationController
       flash[:color]= "invalid"
       render "login"
     end
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to :action => 'login'
   end
 end

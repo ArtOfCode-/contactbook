@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-  get 'sessions/login'
+  get 'login', to: 'sessions#login'
+  get 'logout', to: 'sessions#logout'
 
-  get 'sessions/home'
+  get 'sign-up', to: 'users#new'
+  post 'sign-up', to: 'users#create'
 
-  get 'sessions/profile'
-
-  get 'sessions/settings'
-
-  get 'users/sign_up', to: 'users#new'
-  post 'users/sign_up', to: 'users#create'
+  get 'dashboard', to: 'sessions#home'
+  get 'profile', to: 'sessions#profile'
+  get 'settings', to: 'sessions#settings'
 
   resources :contacts
 end
