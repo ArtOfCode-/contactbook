@@ -1,9 +1,4 @@
 <% @page_title = "Login" %>
-<% if not flash.nil? %>
-  <div class="notice-<%= flash[:color] %>">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
 <div class= "signup-form">
   <h1>Log in</h1>
   <%= form_tag(:action => 'login_attempt') do %>

@@ -1,11 +1,6 @@
 <% @page_title = "ContactBook | Sign Up" %>
 <div class="signup-form">
   <h1>Sign Up</h1>
-  <% if not flash.nil? %>
-    <div class="notice-<%= flash[:color] %>">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
   <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
     <p> Username:</br> <%= f.text_field :username%> </p>
     <p> Email:</br> <%= f.text_field :email%> </p>

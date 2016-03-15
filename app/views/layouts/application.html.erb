@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% if not flash.nil? %>
+  <div class="notice-<%= flash[:color] %>">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <%= yield %>
 
 </body>
