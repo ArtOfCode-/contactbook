@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'login', to: 'sessions#login'
+  post 'login', to: 'sessions#login_attempt'
   get 'logout', to: 'sessions#logout'
 
   get 'sign-up', to: 'users#new'
