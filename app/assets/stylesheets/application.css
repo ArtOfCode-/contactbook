@@ -19,7 +19,6 @@
   border: 2px solid #00701d;
   background: #41cc66;
   color: #003d10;
-  margin: 10px;
 }
 
 .notice-invalid {
@@ -27,7 +26,6 @@
   border: 2px solid #660000;
   background: #c92e2e;
   color: white;
-  margin: 10px;
 }
 
 span.small {
