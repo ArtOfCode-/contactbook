@@ -31,3 +31,10 @@
 span.small {
   font-size: 0.8em;
 }
+
+hr {
+  border: none;
+  height: 1px;
+  background: #777;
+  width: 80%;
+}
