@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.select("title, first, last, city, phone, email").where("created_by" => @current_user.id)
+    @contacts = Contact.select("id, title, first, last, city, phone, email").where("created_by" => @current_user.id)
   end
 
   # GET /contacts/1
