@@ -14,12 +14,48 @@
  *= require_self
  */
 
+body {
+  margin: 0;
+  background: #aaa;
+}
+
+.container {
+  min-width: 25%;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.topbar {
+  background: #ed960b;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.topbar a {
+  text-decoration: underline;
+  color: white;
+}
+.topbar a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.content {
+  background: white;
+  padding: 10px;
+}
+
 .notice-valid {
-  color: #00701d
+  color: #00701d;
+  text-align: center;
 }
 
 .notice-invalid {
   color: #c92e2e;
+  text-align: center;
 }
 
 span.small {
