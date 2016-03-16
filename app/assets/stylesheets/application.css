@@ -62,3 +62,11 @@ body {
 span.small {
   font-size: 0.8em;
 }
+
+table > thead {
+  background: #ed960b;
+}
+
+td {
+  padding: 5px 10px;
+}
