@@ -7,7 +7,6 @@ class CreateContacts < ActiveRecord::Migration
       t.string :city
       t.string :phone
       t.string :email
-      t.integer :created_by
 
       t.timestamps null: false
     end
