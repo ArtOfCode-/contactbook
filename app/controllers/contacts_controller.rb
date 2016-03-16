@@ -1,12 +1,12 @@
 class ContactsController < ApplicationController
   before_filter :authenticate_user
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  before_action :check_ownership
+  before_action :check_ownership, except: [:index, :new, :create]
 
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts = Contact.select("title, first, last, city, phone, email").where("created_by" => @current_user.id)
   end
 
   # GET /contacts/1
