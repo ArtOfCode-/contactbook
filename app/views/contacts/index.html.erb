@@ -23,7 +23,7 @@
         <td><%= contact.phone %></td>
         <td><%= contact.email %></td>
         <td><%= link_to 'Show', contact.id %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact.id) %></td>
+        <td><%= link_to 'Edit', contact.id %></td>
         <td><%= link_to 'Delete', contact.id, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
