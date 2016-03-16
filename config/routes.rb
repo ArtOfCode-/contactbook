@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   get 'exports/json', to: 'exports#json'
   get 'exports/xml', to: 'exports#xml'
 
+  root to: 'sessions#home'
+
   resources :contacts
 end
