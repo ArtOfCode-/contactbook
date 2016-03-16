@@ -1,5 +1,7 @@
 class ContactsController < ApplicationController
+  before_filter :authenticate_user
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :check_ownership
 
   # GET /contacts
   # GET /contacts.json
@@ -25,6 +27,7 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
+    @contact.created_by = @current_user.id
 
     respond_to do |format|
       if @contact.save
@@ -70,5 +73,11 @@ class ContactsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
       params.require(:contact).permit(:first, :last, :title, :city, :phone, :email)
+    end
+
+    def check_ownership
+      if @contact.created_by != @current_user.id
+        render :status => 403
+      end
     end
 end
