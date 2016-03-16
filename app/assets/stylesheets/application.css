@@ -15,17 +15,11 @@
  */
 
 .notice-valid {
-  padding: 10px 20px;
-  border: 2px solid #00701d;
-  background: #41cc66;
-  color: #003d10;
+  color: #00701d
 }
 
 .notice-invalid {
-  padding: 10px 20px;
-  border: 2px solid #660000;
-  background: #c92e2e;
-  color: white;
+  color: #660000;
 }
 
 span.small {
