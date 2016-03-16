@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   get 'profile', to: 'sessions#profile'
   get 'settings', to: 'sessions#settings'
 
+  get 'exports/json', to: 'exports#json'
+  get 'exports/xml', to: 'exports#xml'
+
   resources :contacts
 end
