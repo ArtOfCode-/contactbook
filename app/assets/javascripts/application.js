@@ -15,5 +15,3 @@
 //= require turbolinks
 //= require_tree .
 //= require datatables.js
-
-$("table").DataTable();
