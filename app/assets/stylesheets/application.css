@@ -67,7 +67,10 @@ table > thead {
   background: #ed960b;
   color: white;
 }
+table > thead > td {
+  padding: 5px 10px;
+}
 
 td {
-  padding: 10px;
+  padding: 5px 10px;
 }
