@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'exports/json'
+
+  get 'exports/xml'
+
   get 'login', to: 'sessions#login'
   post 'login', to: 'sessions#login_attempt'
   get 'logout', to: 'sessions#logout'
