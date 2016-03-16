@@ -11,7 +11,9 @@
   <div class="topbar">
     <% if not @current_user.nil? %>
       Logged in as <%= @current_user.username %> —
-      <a href="/logout">log out</a>
+      <a href="/logout">log out</a> —
+      <a href="/dashboard">dashboard</a> —
+      <a href="/contacts">contacts</a>
     <% else %>
       <a href="/login">log in</a> — <a href="/sign-up">sign up</a>
     <% end %>
