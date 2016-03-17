@@ -80,8 +80,9 @@ class ContactsController < ApplicationController
     end
 
     def check_ownership
+      puts "Checking ownership of contact..."
       if @contact.created_by != @current_user.id
-        render :status => :forbidden
+        render(:file => File.join(Rails.root, 'public/403'), :formats => [:html], :status => 403)
       end
     end
 end
