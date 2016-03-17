@@ -19,6 +19,6 @@ Rails.application.routes.draw do
 
   root to: 'sessions#home'
 
-  resources :contacts
   get 'contacts/all', to: 'contacts#show_all'
+  resources :contacts
 end
