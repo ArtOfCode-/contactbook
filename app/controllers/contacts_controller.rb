@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
   before_filter :authenticate_user
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  before_action :check_ownership, except: [:index, :new, :create]
+  before_action :check_ownership, except: [:index, :new, :create, :show_all]
   before_action :check_admin, only: [:show_all]
 
   # GET /contacts/all
