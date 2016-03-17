@@ -6,7 +6,8 @@ class ContactsController < ApplicationController
 
   # GET /contacts/all
   def show_all
-    @contacts = Contact.joins("inner join users on contacts.created_by = users.id").all
+    @contacts = Contact.joins("inner join users on contacts.created_by = users.id")
+      .select("contacts.id, contacts.title, contacts.first, contacts.last, contacts.city, contacts.phone, contacts.email, users.username")
   end
 
   # GET /contacts
