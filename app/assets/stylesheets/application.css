@@ -75,9 +75,12 @@ td, th {
 }
 
 .admin-view {
-  background: #eac58c;
+  background: #ea430b;
   max-width: 80%;
   min-width: 20%;
   margin-left: auto;
   margin-right: auto;
+  color: white;
+  padding: 10px;
+  text-align: center;
 }
