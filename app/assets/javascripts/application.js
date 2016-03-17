@@ -15,3 +15,9 @@
 //= require turbolinks
 //= require datatables.js
 //= require_tree .
+
+$(document).ready(function() {
+  $("table").each(function() {
+    $(this).DataTable();
+  });
+});
