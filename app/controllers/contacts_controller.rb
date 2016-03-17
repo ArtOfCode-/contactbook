@@ -89,6 +89,7 @@ class ContactsController < ApplicationController
           end
         else
           admin_notice[:show] = true
+        end
       end
     end
 end
