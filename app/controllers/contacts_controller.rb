@@ -2,6 +2,12 @@ class ContactsController < ApplicationController
   before_filter :authenticate_user
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   before_action :check_ownership, except: [:index, :new, :create]
+  before_action :check_admin, only: [:show_all]
+
+  # GET /contacts/all
+  def show_all
+    @contacts = Contact.all
+  end
 
   # GET /contacts
   # GET /contacts.json
@@ -90,6 +96,17 @@ class ContactsController < ApplicationController
         else
           flash[:admin_notice] = true
         end
+      end
+    end
+
+    def check_admin
+      if !@current_user.is_admin
+        respond_to do |format|
+          format.html { render(:file => File.join(Rails.root, 'public/403'), :formats => [:html], :status => 403) }
+          format.json { head :forbidden }
+        end
+      else
+        flash[:admin_notice] = true
       end
     end
 end
