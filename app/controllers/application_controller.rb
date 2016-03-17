@@ -29,6 +29,8 @@ class ApplicationController < ActionController::Base
   end
 
   def clear_notice
-    flash = nil
+    flash[:notice] = nil
+    flash[:color] = nil
+    flash[:admin_notice] = nil
   end
 end
