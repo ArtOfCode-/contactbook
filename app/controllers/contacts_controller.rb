@@ -31,7 +31,11 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to action: "index", notice: 'Contact was successfully created.' }
+        format.html {
+          flash[:notice] = "Contact was successfully created."
+          flash[:color] = "valid"
+          redirect_to action: "index"
+        }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
