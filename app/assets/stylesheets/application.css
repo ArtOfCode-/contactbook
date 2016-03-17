@@ -73,3 +73,11 @@ table > thead {
 td, th {
   padding: 5px 10px;
 }
+
+.admin-view {
+  background: #eac58c;
+  max-width: 80%;
+  min-width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+}

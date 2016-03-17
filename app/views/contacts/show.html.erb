@@ -1,3 +1,8 @@
+<% if @current_user.is_admin && @contact.created_by != @current_user.id %>
+  <p class="admin-view">You are viewing this page as an administrator. Standard users cannot see this content
+  unless they own it.</p>
+<% end %>
+
 <p>
   <strong>First:</strong>
   <%= @contact.first %>
