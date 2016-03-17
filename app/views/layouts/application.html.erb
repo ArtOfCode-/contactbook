@@ -24,6 +24,10 @@
         <%= flash[:notice] %>
       </span>
     <% end %>
+    <% if admin_notice[:show] == true %>
+      <p class="admin-view">You are viewing this page as an administrator. Standard users cannot see this content
+      unless they own it.</p>
+    <% end %>
 
     <%= yield %>
   </div>
