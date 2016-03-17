@@ -16,7 +16,7 @@
 //= require datatables.js
 //= require_tree .
 
-$(document).ready(function() {
+$(document).on('ready page:load', function() {
   $("table").each(function() {
     $(this).DataTable();
   });
