@@ -88,7 +88,7 @@ class ContactsController < ApplicationController
             format.json { head :forbidden }
           end
         else
-          admin_notice[:show] = true
+          flash[:admin_notice] = true
         end
       end
     end
