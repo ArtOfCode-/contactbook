@@ -77,7 +77,7 @@ class ContactsController < ApplicationController
 
     def check_ownership
       if @contact.created_by != @current_user.id
-        render :status => 403
+        render :status => :forbidden
       end
     end
 end
