@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'admin/index'
+  get 'admin', to: 'admin#index'
 
-  get 'exports/json'
-
-  get 'exports/xml'
+  get 'exports/json', to: 'exports#json'
+  get 'exports/xml', to: 'exports#xml'
 
   get 'login', to: 'sessions#login'
   post 'login', to: 'sessions#login_attempt'
