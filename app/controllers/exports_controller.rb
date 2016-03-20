@@ -18,7 +18,7 @@ class ExportsController < ApplicationController
     vcard.name @contact.last, @contact.first
     vcard.fullname "#{@contact.title} #{@contact.first} #{@contact.last}"
     vcard.email @contact.email
-    vcard.phone @contact.phone
+    vcard.tel @contact.phone, :type => 'home'
     vcard.city @contact.city
 
     response.headers['Content-Type'] = 'text/vcard'
