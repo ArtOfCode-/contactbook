@@ -1,7 +1,7 @@
 class ExportsController < ApplicationController
   before_filter :set_contact, :only => [:vcard]
-  before_filter :verify_ownership, :only => [:vcard]
   before_filter :authenticate_user
+  before_filter :verify_ownership, :only => [:vcard]
 
   def json
     contacts = Contact.select("id, title, first, last, city, phone, email").where("created_by" => @current_user.id)
