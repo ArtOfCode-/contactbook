@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get 'exports/json', to: 'exports#json'
   get 'exports/xml', to: 'exports#xml'
+  get 'exports/vcf/:id', to: 'exports#vcard'
 
   root to: 'sessions#home'
 
