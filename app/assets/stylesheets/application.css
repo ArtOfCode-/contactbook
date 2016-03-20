@@ -84,3 +84,14 @@ td, th {
   padding: 10px;
   text-align: center;
 }
+
+a {
+  background: none;
+  color: #ed960b;
+  text-decoration: underline;
+}
+a:hover {
+  background: none;
+  color: #ed960b;
+  text-decoration: none;
+}
