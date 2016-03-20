@@ -33,4 +33,18 @@ class ApplicationController < ActionController::Base
     flash[:color] = nil
     flash[:admin_notice] = nil
   end
+
+  def verify_admin
+    auth = authenticate_user
+    if auth
+      if !@current_user.is_admin
+        flash[:notice] = "You must be an administrator to access that page."
+        flash[:color] = "invalid"
+        redirect_to root_path
+        return
+      else
+        flash[:admin_notice] = true
+      end
+    end
+  end
 end
