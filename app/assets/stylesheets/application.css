@@ -74,7 +74,7 @@ td, th {
   padding: 5px 10px;
 }
 
-tr:hover {
+tr:even {
   background: #ccc;
 }
 
