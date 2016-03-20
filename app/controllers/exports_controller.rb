@@ -34,7 +34,7 @@ class ExportsController < ApplicationController
     end
 
     def verify_ownership
-      if @contact.created_by != @current_user.id
+      if @contact.created_by != @current_user.id && !@current_user.is_admin
         render(:file => File.join(Rails.root, 'public/403'), :formats => [:html], :status => 403)
         return
       end
