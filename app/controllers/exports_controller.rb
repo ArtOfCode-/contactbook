@@ -20,7 +20,7 @@ class ExportsController < ApplicationController
     vcard.email @contact.email
     vcard.phone @contact.phone
     vcard.title @contact.title
-    vcard.city @contact.city
+    #vcard.city @contact.city
 
     response.headers['Content-Type'] = 'text/vcard'
     render :text => vcard
