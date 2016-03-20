@@ -14,6 +14,9 @@
       <a href="/logout">log out</a> —
       <a href="/dashboard">dashboard</a> —
       <a href="/contacts">contacts</a>
+      <% if @current_user.is_admin %>
+        — <a href="/admin">admin</a>
+      <% end %>
     <% else %>
       <a href="/login">log in</a> — <a href="/sign-up">sign up</a>
     <% end %>
