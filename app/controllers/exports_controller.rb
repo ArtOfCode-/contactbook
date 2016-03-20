@@ -15,12 +15,14 @@ class ExportsController < ApplicationController
 
   def vcard
     vcard = VCardigan.create
-    vcard.name @contact.last, @contact.first
-    #vcard.fullname '#{@contact.first} #{@contact.last}'
+    #vcard.name @contact.last, @contact.first
+    vcard.fullname '#{@contact.first} #{@contact.last}'
     #vcard.email @contact.email
     #vcard.phone @contact.phone
     #vcard.title @contact.title
     #vcard.city @contact.city
+
+    puts vcard
 
     response.headers['Content-Type'] = 'text/vcard'
     render :text => vcard
