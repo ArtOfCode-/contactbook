@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  before_filter :authenticate_user
   before_action :verify_admin
 
   def index
@@ -6,7 +7,7 @@ class AdminController < ApplicationController
 
   private
     def verify_admin
-      if @current_user.nil? || !@current_user.is_admin
+      if !@current_user.is_admin
         flash[:notice] = "You must be an administrator to view that page."
         flash[:color] = "invalid"
         redirect_to root_path
