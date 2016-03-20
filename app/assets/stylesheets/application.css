@@ -75,7 +75,7 @@ td, th {
 }
 
 tr.even {
-  background: #ccc;
+  background: #ccc !important;
 }
 
 .admin-view {
