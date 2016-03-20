@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'sign-up', to: 'users#new'
   post 'sign-up', to: 'users#create'
 
+  get 'users', to: 'users#index'
+
   get 'dashboard', to: 'sessions#home'
   get 'profile', to: 'sessions#profile'
   get 'settings', to: 'sessions#settings'
