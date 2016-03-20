@@ -10,4 +10,7 @@ class ExportsController < ApplicationController
     contacts = Contact.select("id, title, first, last, city, phone, email").where("created_by" => @current_user.id)
     render :xml => contacts
   end
+
+  def vcard
+  end
 end

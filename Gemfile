@@ -45,4 +45,6 @@ group :development do
   gem 'spring'
 end
 
-gem 'bcrypt-ruby', :require => 'bcrypt' 
+gem 'bcrypt-ruby', :require => 'bcrypt'
+
+gem 'vcardigan'
