@@ -74,7 +74,7 @@ td, th {
   padding: 5px 10px;
 }
 
-tr:even {
+tr.even {
   background: #ccc;
 }
 
