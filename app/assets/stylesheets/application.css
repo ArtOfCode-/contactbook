@@ -85,12 +85,12 @@ td, th {
   text-align: center;
 }
 
-a, a:visited {
+.content a, .content a:visited {
   background: none;
   color: #ed960b;
   text-decoration: underline;
 }
-a:hover, a:active {
+.content a:hover, .content a:active {
   background: none;
   color: #ed960b;
   text-decoration: none;
