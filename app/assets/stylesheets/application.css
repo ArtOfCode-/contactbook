@@ -74,6 +74,10 @@ td, th {
   padding: 5px 10px;
 }
 
+tr:hover {
+  background: #ccc;
+}
+
 .admin-view {
   background: #ea430b;
   max-width: 80%;
