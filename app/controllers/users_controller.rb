@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :save_login_state, :only => [:new, :create]
+  before_action :verify_admin, :only => [:index]
 
   def new
     @user = User.new
