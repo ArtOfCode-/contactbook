@@ -69,6 +69,10 @@ span.small {
   font-size: 0.8em;
 }
 
+table {
+  max-width: 100% !important;
+}
+
 table > thead {
   background: #ed960b;
   color: white;
