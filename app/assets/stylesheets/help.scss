@@ -40,12 +40,17 @@
   clear: both;
 }
 
-ul.bullet-qmark {
-  list-style-image: url('/assets/qmark-bullet.png');
+ul li{
+  list-style: none;
+  padding: 0 23px;
 }
-ul.bullet-contact {
-  list-style-image: url('/assets/contact-bullet.png');
+
+ul.bullet-qmark li {
+  background: url('/assets/qmark-bullet.png') no-repeat left center;
 }
-ul.bullet-padlock {
-  list-style-image: url('/assets/padlock-bullet.png');
+ul.bullet-contact li {
+  background: url('/assets/contact-bullet.png') no-repeat left center;
+}
+ul.bullet-padlock li {
+  background: url('/assets/padlock-bullet.png') no-repeat left center;
 }
