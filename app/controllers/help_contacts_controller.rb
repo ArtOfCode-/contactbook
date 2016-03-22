@@ -1,0 +1,2 @@
+class HelpContactsController < ApplicationController
+end

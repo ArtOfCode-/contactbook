@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'help_security/tech'
+
+  get 'help_security/bugs'
+
+  get 'help_about/whats_this'
+
+  get 'help_about/contact'
+
   get 'help', to: 'help#index'
   get 'help/contacts', to: 'help#contacts'
   get 'help/security', to: 'help#security'
