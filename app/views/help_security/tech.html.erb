@@ -1,2 +1,15 @@
-<h1>HelpSecurity#tech</h1>
-<p>Find me in app/views/help_security/tech.html.erb</p>
+<h1>What security technologies are used on this site?</h1>
+<p>I take privacy and security seriously, and in developing this site have employed a number of security technologies to
+  keep personal data safe.</p>
+
+<h3>Database</h3>
+<p>All site data is stored in a database. This is an SQLite database hosted and managed by Amazon Web Services. The
+  site interfaces this database through the Ruby on Rails web framework, which is the primary development environment.
+  The database is stored securely and requires a secure access key to access any data.</p>
+
+<h3>Account Details</h3>
+<p>Signing up for an account on this site requires an email address, a username, and a password. Passwords in particular
+  are handled carefully - they are *never* stored in plain text in the database (and consequently, neither I nor the
+  website software have access to your plain text password). Passwords are passed through a cryptographic hash system
+  called bcrypt, which consists of mixing your password with a random string of characters, then performing a series of
+  operations on it several thousand times to obfuscate the original.</p>
