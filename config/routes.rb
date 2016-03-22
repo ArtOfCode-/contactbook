@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'help/index'
+
+  get 'help/contacts'
+
+  get 'help/security'
+
   get 'admin', to: 'admin#index'
 
   get 'exports/json', to: 'exports#json'
