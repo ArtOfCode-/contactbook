@@ -13,12 +13,15 @@
       Logged in as <%= @current_user.username %> —
       <a href="/logout">log out</a> —
       <a href="/dashboard">dashboard</a> —
-      <a href="/contacts">contacts</a>
+      <a href="/contacts">contacts</a> —
+      <a href="/help">help</a>
       <% if @current_user.is_admin %>
         — <a href="/admin">admin</a>
       <% end %>
     <% else %>
-      <a href="/login">log in</a> — <a href="/sign-up">sign up</a>
+      <a href="/login">log in</a> —
+      <a href="/sign-up">sign up</a> —
+      <a href="/help">help</a>
     <% end %>
   </div>
   <div class="content">
