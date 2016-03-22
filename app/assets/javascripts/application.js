@@ -19,5 +19,7 @@
 $(document).on('ready page:load', function() {
   $("table").each(function() {
     $(this).DataTable();
+    $(this).width($(this).parent().width());
+    $(this).css("overflow", "scroll");
   });
 });
