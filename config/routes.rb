@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
-  get 'help/index'
-
-  get 'help/contacts'
-
-  get 'help/security'
+  get 'help', to: 'help#index'
+  get 'help/contacts', to: 'help#contacts'
+  get 'help/security', to: 'help#security'
 
   get 'admin', to: 'admin#index'
 
