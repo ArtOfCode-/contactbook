@@ -18,16 +18,9 @@
 
 $(document).on('ready page:load', function() {
   $("table").each(function() {
-    $(this).DataTable();
-
-    var parentWidth = $(this).parent().width();
-    $(this).width(parentWidth);
-    $(this).css("overflow", "scroll");
-
-    var cols = $(this).find("tr").first().find("tr, th").length;
-    var colWidth = parentWidth / cols;
-    $(this).find("th, td").each(function() {
-      $(this).width(colWidth);
+    $(this).DataTable({
+      "bAutoWidth": false
     });
+    $(this).css("width", "100%");
   });
 });
