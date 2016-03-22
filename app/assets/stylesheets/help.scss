@@ -39,3 +39,13 @@
 .help-footer {
   clear: both;
 }
+
+ul.bullet-qmark {
+  list-style-image: url('/images/qmark-bullet.png');
+}
+ul.bullet-contact {
+  list-style-image: url('/images/contact-bullet.png');
+}
+ul.bullet-padlock {
+  list-style-image: url('/images/padlock-bullet.png');
+}
