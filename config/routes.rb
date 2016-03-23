@@ -42,5 +42,5 @@ Rails.application.routes.draw do
   resources :contacts
 
   # === SPECIAL ROUTES === #
-  root to: 'sessions#home'
+  root to: 'help_about#whats_this'
 end
