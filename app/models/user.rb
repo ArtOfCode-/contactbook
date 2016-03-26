@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   after_save :clear_password
 
   def encrypt_password
+    BCrypt::Engine.cost = 13
     if password.present?
       self.salt = BCrypt::Engine.generate_salt
       self.encrypted_password = BCrypt::Engine.hash_secret(password, salt)
