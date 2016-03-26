@@ -1,0 +1,2 @@
+class DynamicRoutesController < ApplicationController
+end
