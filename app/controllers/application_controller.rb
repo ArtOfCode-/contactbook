@@ -37,8 +37,10 @@ class ApplicationController < ActionController::Base
   end
 
   def clear_notice
-    flash[:notice] = nil
-    flash[:color] = nil
+    if flash[:preserve_notice].nil? || flash[:preserve_notice] == false
+      flash[:notice] = nil
+      flash[:color] = nil
+    end
     flash[:admin_notice] = nil
   end
 
