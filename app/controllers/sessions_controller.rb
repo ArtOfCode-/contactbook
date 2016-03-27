@@ -40,6 +40,6 @@ class SessionsController < ApplicationController
 
     def derive_dek(user)
       encrypted = encrypt_password(params[:login_password], user.salt)
-      return Digest::SHA2.new(512).hexdigest("#{params[:login_password]}#{encrypted}")
+      return Digest::SHA2.new(256).hexdigest("#{params[:login_password]}#{encrypted}")
     end
 end
