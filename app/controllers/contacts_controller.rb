@@ -91,6 +91,8 @@ class ContactsController < ApplicationController
     end
   end
 
+
+  # Methods that are specific to contacts operations.
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
