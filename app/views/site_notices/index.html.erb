@@ -3,7 +3,7 @@
 
 <% @site_notices.each do |notice| %>
   <div class="site-notice">
-    <p><%= notice.text %></p>
+    <p><%= raw notice.text %></p>
     <p class="notice-details">
       Posted by
       <%= notice.created_by %>
