@@ -38,6 +38,8 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.created_by = @current_user.id
 
+    @contact = encrypt_contacts(@contact)
+
     respond_to do |format|
       if @contact.save
         format.html {
@@ -56,8 +58,20 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
   def update
+    # Because we're encrypting, just updating the old contact leaves a point of vulnerability at which the plaintext
+    # details are in the database. To avoid that, destroy the old record and replace it with a new one, which is
+    # encrypted before it ever hits the database.
+    old_contact = Contact.find(params[:id])
+    old_contact.destroy
+
+    @contact = Contact.new(contact_params)
+    @contact.id = params[:id]
+    @contact.created_by = @current_user.id
+
+    @contact = encrypt_contacts(@contact)
+
     respond_to do |format|
-      if @contact.update(contact_params)
+      if @contact.save
         format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
         format.json { render :show, status: :ok, location: @contact }
       else
