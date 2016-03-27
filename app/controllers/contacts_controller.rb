@@ -138,7 +138,9 @@ class ContactsController < ApplicationController
         end
         return contacts
       else
-        return encrypt_singe(contacts)
+        return encrypt_single(contacts)
+      end
+    end
 
     def encrypt_single(contact)
       authenticate_user
