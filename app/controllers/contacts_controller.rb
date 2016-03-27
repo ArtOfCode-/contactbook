@@ -81,7 +81,7 @@ class ContactsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
       @contact = Contact.find(params[:id])
-      @contact = decrypt_contact(@contact)
+      @contact = decrypt_contacts(@contact)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
