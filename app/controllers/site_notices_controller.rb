@@ -13,9 +13,7 @@ class SiteNoticesController < ApplicationController
       flash[:color] = "valid"
       redirect_to action: :index
     else
-      flash[:notice] = "The notice could not be created - please try again."
-      flash[:color] = "invalid"
-      redirect_to action: :new
+      render :new
     end
   end
 
@@ -28,9 +26,7 @@ class SiteNoticesController < ApplicationController
       flash[:color] = "valid"
       redirect_to action: :index
     else
-      flash[:notice] = "The notice could not be updated - please try again."
-      flash[:color] = "invalid"
-      redirect_to action: :index
+      render :edit
     end
   end
 
