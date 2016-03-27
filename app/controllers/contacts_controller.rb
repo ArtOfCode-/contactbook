@@ -104,6 +104,14 @@ class ContactsController < ApplicationController
     end
 
     def decrypt_contacts(contacts)
+      authenticate_user
+      if session[:dek].nil?
+        flash[:notice] = "There was an error with your session; please log in again."
+        flash[:color] = "invalid"
+        flash[:preserve_notice] = true
+        redirect_to url_for(:controller => :sessions, :action => :logout)
+        return
+      end
       puts "Decrypting contacts (:decrypt_contacts)"
       if contacts.kind_of?(Array)
         puts "contacts.kind_of?(Array) == true (:decrypt_contacts)"
@@ -121,23 +129,24 @@ class ContactsController < ApplicationController
     end
 
     def decrypt_single(contact)
+      rijndael = Rijndael::Base.new(session[:dek])
+      contact.attributes.each do |name, value|
+        if Contact.encrypted_fields.include?(name)
+          contact[name] = rijndael.decrypt(value)
+        end
+      end
+      return contact
+    end
+
+    def encrypt_contacts(contacts)
       authenticate_user
       if session[:dek].nil?
         flash[:notice] = "There was an error with your session; please log in again."
         flash[:color] = "invalid"
         flash[:preserve_notice] = true
-      else
-        rijndael = Rijndael::Base.new(session[:dek])
-        contact.attributes.each do |name, value|
-          if Contact.encrypted_fields.include?(name)
-            contact[name] = rijndael.decrypt(value)
-          end
-        end
-        return contact
+        redirect_to url_for(:controller => :sessions, :action => :logout)
+        return
       end
-    end
-
-    def encrypt_contacts(contacts)
       if contacts.kind_of?(Array)
         contacts.each_with_index do |contact, index|
           contacts[index] = encrypt_single(contact)
@@ -149,19 +158,12 @@ class ContactsController < ApplicationController
     end
 
     def encrypt_single(contact)
-      authenticate_user
-      if session[:dek].nil?
-        flash[:notice] = "There was an error with your session; please log in again."
-        flash[:color] = "invalid"
-        flash[:preserve_notice] = true
-      else
-        rijndael = Rijndael::Base.new(session[:dek])
-        contact.attributes.each do |name, value|
-          if Contact.encrypted_fields.include?(name)
-            contact[name] = rijdael.encrypt(value)
-          end
+      rijndael = Rijndael::Base.new(session[:dek])
+      contact.attributes.each do |name, value|
+        if Contact.encrypted_fields.include?(name)
+          contact[name] = rijdael.encrypt(value)
         end
-        return contact
       end
+      return contact
     end
 end
