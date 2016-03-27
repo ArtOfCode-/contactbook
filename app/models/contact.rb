@@ -10,7 +10,7 @@ class Contact < ActiveRecord::Base
       flash[:preserve_notice] = true
     else
       rijndael = Rijndael::Base.new(session[:dek])
-      for self.attributes.each do |name, value|
+      self.attributes.each do |name, value|
         if self.encrypted_fields.include?(name)
           self[name] = rijdael.encrypt(value)
         end
