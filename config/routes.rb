@@ -1,16 +1,4 @@
 Rails.application.routes.draw do
-  get 'site_notices/new'
-
-  get 'site_notices/create'
-
-  get 'site_notices/edit'
-
-  get 'site_notices/update'
-
-  get 'site_notices/destroy'
-
-  get 'site_notices/index'
-
   # ==== HELP CENTER ROUTES === #
   get 'help', to: 'help#index'
 
@@ -31,6 +19,13 @@ Rails.application.routes.draw do
   get 'admin', to: 'admin#index'
   get 'users', to: 'users#index'
   get 'contacts/all', to: 'contacts#show_all'
+
+  get 'admin/notices', to: 'site_notices#index'
+  get 'admin/notices/new', to: 'site_notices#new'
+  post 'admin/notices/new', to: 'site_notices#create'
+  get 'admin/notices/:id/edit', to: 'site_notices#edit'
+  post 'admin/notices/:id/edit', to: 'site_notices#update'
+  delete 'admin/notices/:id', to: 'site_notices#destroy'
 
   # === EXPORTS ROUTES === #
   get 'exports/json', to: 'exports#json'
