@@ -1,7 +1,7 @@
 class Contact < ActiveRecord::Base
   before_save :encrypt_data
 
-  self.encrypted_fields = ['first', 'last', 'title', 'city', 'phone', 'email']
+  encrypted_fields = ['first', 'last', 'title', 'city', 'phone', 'email']
 
   def encrypt_data
     if @current_user.nil? || session[:dek].nil?
