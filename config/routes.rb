@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   get 'admin/notices/new', to: 'site_notices#new'
   post 'admin/notices/new', to: 'site_notices#create'
   get 'admin/notices/:id/edit', to: 'site_notices#edit'
-  post 'admin/notices/:id/edit', to: 'site_notices#update'
+  put 'admin/notices/:id/edit', to: 'site_notices#update'
+  patch 'admin/notices/:id/edit', to: 'site_notices#update'
   delete 'admin/notices/:id', to: 'site_notices#destroy'
 
   # === EXPORTS ROUTES === #
