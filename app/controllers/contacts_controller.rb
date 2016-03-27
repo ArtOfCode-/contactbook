@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   before_filter :authenticate_user
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :decrypt_contact, only: [:show, :edit]
   before_action :check_ownership, except: [:index, :new, :create, :show_all]
   before_action :verify_admin, only: [:show_all]
 
@@ -98,6 +99,9 @@ class ContactsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
       @contact = Contact.find(params[:id])
+    end
+
+    def decrypt_set_contact
       @contact = decrypt_contacts(@contact)
     end
 
