@@ -32,6 +32,10 @@ class SessionsController < ApplicationController
     redirect_to :action => 'login'
   end
 
+  def home
+    @notices = SiteNotice.all
+  end
+
   private
     def encrypt_password(password, salt)
       BCrypt::Engine.cost = 13
