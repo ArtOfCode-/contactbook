@@ -8,12 +8,14 @@ class ContactsController < ApplicationController
   def show_all
     @contacts = Contact.joins("inner join users on contacts.created_by = users.id")
       .select("contacts.id, contacts.title, contacts.first, contacts.last, contacts.city, contacts.phone, contacts.email, users.username")
+    @contacts = decrypt_contacts(@contacts)
   end
 
   # GET /contacts
   # GET /contacts.json
   def index
     @contacts = Contact.select("id, title, first, last, city, phone, email").where("created_by" => @current_user.id)
+    @contacts = decrypt_contacts(@contacts)
   end
 
   # GET /contacts/1
@@ -123,6 +125,32 @@ class ContactsController < ApplicationController
         contact.attributes.each do |name, value|
           if Contact.encrypted_fields.include?(name)
             contact[name] = rijndael.decrypt(value)
+          end
+        end
+        return contact
+      end
+    end
+
+    def encrypt_contacts(contacts)
+      if contacts.kind_of?(Array)
+        contacts.each_with_index do |contact, index|
+          contacts[index] = encrypt_single(contact)
+        end
+        return contacts
+      else
+        return encrypt_singe(contacts)
+
+    def encrypt_single(contact)
+      authenticate_user
+      if session[:dek].nil?
+        flash[:notice] = "There was an error with your session; please log in again."
+        flash[:color] = "invalid"
+        flash[:preserve_notice] = true
+      else
+        rijndael = Rijndael::Base.new(session[:dek])
+        contact.attributes.each do |name, value|
+          if Contact.encrypted_fields.include?(name)
+            contact[name] = rijdael.encrypt(value)
           end
         end
         return contact
