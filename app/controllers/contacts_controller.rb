@@ -8,7 +8,8 @@ class ContactsController < ApplicationController
   def show_all
     @contacts = Contact.joins("inner join users on contacts.created_by = users.id")
       .select("contacts.id, contacts.title, contacts.first, contacts.last, contacts.city, contacts.phone, contacts.email, users.username")
-    @contacts = decrypt_contacts(@contacts)
+    # Don't bother decrypting these contacts; administrators won't be able to decrypt everything because DEKs are based
+    # on passwords. Only some contacts (their own) would show in plain text.
   end
 
   # GET /contacts
@@ -98,7 +99,6 @@ class ContactsController < ApplicationController
     def set_contact
       @contact = Contact.find(params[:id])
       @contact = decrypt_contacts(@contact)
-      puts "Found and decrypted contact (:set_contact), @contact.class == #{@contact.class}"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -107,7 +107,6 @@ class ContactsController < ApplicationController
     end
 
     def check_ownership
-      puts "Checking ownership of contact..."
       if @contact.created_by != @current_user.id
         if !@current_user.is_admin
           respond_to do |format|
@@ -129,20 +128,13 @@ class ContactsController < ApplicationController
         redirect_to url_for(:controller => :sessions, :action => :logout)
         return
       end
-      puts "Decrypting contacts (:decrypt_contacts)"
       if contacts.respond_to?(:each_with_index)
-        puts "contacts.kind_of?(Array) == true (:decrypt_contacts)"
         contacts.each_with_index do |contact, index|
-          decrypted = decrypt_single(contact)
-          contacts[index] = decrypted
-          puts "Decrypted single contact: result type #{decrypted.class} (:decrypt_contacts)"
+          contacts[index] = decrypt_single(contact)
         end
-        puts "All decryptions completed; returning object of type #{contacts.class} (:decrypt_contacts)"
         return contacts
       else
-        decrypted = decrypt_single(contacts)
-        puts "contacts.kind_of?(Array) == false; decrypted single contact to type #{decrypted.class} (:decrypt_contacts)"
-        return decrypted
+        return decrypt_single(contacts)
       end
     end
 
