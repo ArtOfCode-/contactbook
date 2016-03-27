@@ -1,2 +1,18 @@
-<h1>SiteNotices#index</h1>
-<p>Find me in app/views/site_notices/index.html.erb</p>
+<h1>Site Notices</h1>
+<p>These site notices are currently active, and will show on every user's dashboard.</p>
+
+<% @site_notices.each do |notice| %>
+  <div class="site-notice">
+    <p><%= notice.text %></p>
+    <p class="notice-details">
+      Posted by
+      <%= notice.created_by %>
+      at
+      <%= notice.created_at %>
+    </p>
+    <p>
+      <%= link_to "Edit", edit_site_notice_path(notice) %> |
+      <%= link_to "Delete", notice, :method => :delete, data: { :confirm => 'Are you sure?' } %>
+    </p>
+  </div>
+<% end %>
