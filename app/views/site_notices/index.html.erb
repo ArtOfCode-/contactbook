@@ -11,8 +11,9 @@
       <%= notice.created_at %>
     </p>
     <p>
-      <%= link_to "Edit", edit_site_notice_path(notice) %> |
-      <%= link_to "Delete", notice, :method => :delete, data: { :confirm => 'Are you sure?' } %>
+      <%= link_to "Edit", url_for(:controller => :post_notices, :action => :edit, :id => notice.id) %> |
+      <%= link_to "Delete", url_for(:controller => :post_notices, :action => :destroy, :id => notice.id),
+          :method => :delete, data: { :confirm => 'Are you sure?' } %>
     </p>
   </div>
 <% end %>
