@@ -1,5 +1,5 @@
-class Contact < ActiveRecord::Base
-  def encrypted_fields
+class Contact < ActiveRecord::Base 
+  def self.encrypted_fields
     return ['first', 'last', 'title', 'city', 'phone', 'email']
   end
 end
