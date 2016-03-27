@@ -142,6 +142,7 @@ class ContactsController < ApplicationController
       else
         decrypted = decrypt_single(contacts)
         puts "contacts.kind_of?(Array) == false; decrypted single contact to type #{decrypted.class} (:decrypt_contacts)"
+        return decrypted
       end
     end
 
