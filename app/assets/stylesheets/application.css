@@ -107,3 +107,11 @@ tr.even {
   color: #ed960b;
   text-decoration: none;
 }
+
+textarea {
+  min-width: 20%;
+  max-width: 95%;
+  width: 50%;
+  min-height: 100px;
+  height: 200px;
+}
