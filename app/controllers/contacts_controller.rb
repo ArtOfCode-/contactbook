@@ -104,13 +104,19 @@ class ContactsController < ApplicationController
     end
 
     def decrypt_contacts(contacts)
+      puts "Decrypting contacts (:decrypt_contacts)"
       if contacts.kind_of?(Array)
+        puts "contacts.kind_of?(Array) == true (:decrypt_contacts)"
         contacts.each_with_index do |contact, index|
-          contacts[index] = decrypt_single(contact)
+          decrypted = decrypt_single(contact)
+          contacts[index] = decrypted
+          puts "Decrypted single contact: result type #{decrypted.class} (:decrypt_contacts)"
         end
+        puts "All decryptions completed; returning object of type #{contacts.class} (:decrypt_contacts)"
         return contacts
       else
-        return decrypt_single(contacts)
+        decrypted = decrypt_single(contacts)
+        puts "contacts.kind_of?(Array) == false; decrypted single contact to type #{decrypted.class} (:decrypt_contacts)"
       end
     end
 
