@@ -48,4 +48,4 @@ end
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
 gem 'vcardigan'
-gem 'rijndael'
+gem 'crypt'
