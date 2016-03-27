@@ -7,7 +7,13 @@ class Contact < ActiveRecord::Base
       flash[:color] = "invalid"
       flash[:preserve_notice] = true
     else
-      # TODO: do encryption
+      rijndael = Rijndael::Base.new(session[:dek])
+      fields = ['first', 'last', 'title', 'city', 'phone', 'email']
+      for self.attributes.each do |name, value|
+        if fields.include?(name)
+          self[name] = rijdael.encrypt(value)
+        end
+      end
     end
   end
 end
