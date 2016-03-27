@@ -113,7 +113,7 @@ class ContactsController < ApplicationController
         return
       end
       puts "Decrypting contacts (:decrypt_contacts)"
-      if contacts.kind_of?(Array)
+      if contacts.respond_to?(:each_with_index)
         puts "contacts.kind_of?(Array) == true (:decrypt_contacts)"
         contacts.each_with_index do |contact, index|
           decrypted = decrypt_single(contact)
@@ -147,7 +147,7 @@ class ContactsController < ApplicationController
         redirect_to url_for(:controller => :sessions, :action => :logout)
         return
       end
-      if contacts.kind_of?(Array)
+      if contacts.respond_to?(:each_with_index)
         contacts.each_with_index do |contact, index|
           contacts[index] = encrypt_single(contact)
         end
