@@ -175,7 +175,7 @@ class ContactsController < ApplicationController
       rijndael = Rijndael::Base.new(session[:dek])
       contact.attributes.each do |name, value|
         if Contact.encrypted_fields.include?(name)
-          contact[name] = rijdael.encrypt(value)
+          contact[name] = rijndael.encrypt(value)
         end
       end
       return contact
