@@ -8,6 +8,7 @@ class SiteNoticesController < ApplicationController
 
   def create
     @site_notice = SiteNotice.new(site_notice_params)
+    @site_notice.created_by = @current_user.id
     if @site_notice.save
       flash[:notice] = "The notice was successfully created."
       flash[:color] = "valid"
