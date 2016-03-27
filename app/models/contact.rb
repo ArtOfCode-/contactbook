@@ -1,5 +1,5 @@
 class Contact < ActiveRecord::Base
-  attr_accessor :encrypted_fields
-
-  @encrypted_fields = ['first', 'last', 'title', 'city', 'phone', 'email']
+  def encrypted_fields
+    return ['first', 'last', 'title', 'city', 'phone', 'email']
+  end
 end
