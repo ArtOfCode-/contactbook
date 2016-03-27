@@ -98,6 +98,7 @@ class ContactsController < ApplicationController
     def set_contact
       @contact = Contact.find(params[:id])
       @contact = decrypt_contacts(@contact)
+      puts "Found and decrypted contact (:set_contact), @contact.class == #{@contact.class}"
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
