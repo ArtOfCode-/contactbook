@@ -33,7 +33,8 @@ class SessionsController < ApplicationController
   end
 
   def home
-    @notices = SiteNotice.all
+    @notices = SiteNotice.joins("inner join users on sitenotices.created_by = users.id")
+      .select("sitenotices.text, sitenotices.created_at, users.username")
   end
 
   private
