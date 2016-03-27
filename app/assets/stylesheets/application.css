@@ -114,4 +114,5 @@ textarea {
   width: 50%;
   min-height: 100px;
   height: 200px;
+  font-family: inherit;
 }
