@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'site_notices/new'
+
+  get 'site_notices/create'
+
+  get 'site_notices/edit'
+
+  get 'site_notices/update'
+
+  get 'site_notices/destroy'
+
+  get 'site_notices/index'
+
   # ==== HELP CENTER ROUTES === #
   get 'help', to: 'help#index'
 
