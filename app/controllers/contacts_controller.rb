@@ -103,6 +103,7 @@ class ContactsController < ApplicationController
       contact.save!
     end
     flash[:notice] = "Your contacts were successfully encrypted."
+    flash[:color] = "valid"
     render :encrypt
   end
 
