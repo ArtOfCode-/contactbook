@@ -101,6 +101,7 @@ class ContactsController < ApplicationController
     puts "Found #{@contacts.count} contacts by user #{@current_user.id} with :is_encrypted => false"
     @contacts.each do |contact|
       contact = encrypt_contacts(contact)
+      contact.is_encrypted = true
       contact.save
     end
     flash[:notice] = "Your contacts were successfully encrypted."
