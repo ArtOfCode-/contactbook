@@ -98,7 +98,7 @@ class ApplicationController < ActionController::Base
     def decrypt_single_helper(contact)
       rijndael = Rijndael::Base.new(session[:dek])
       contact.attributes.each do |name, value|
-        if Contact.encrypted_fields.include?(name)
+        if Contact.encrypted_fields.include?(name) && !value.nil? && value != ""
           contact[name] = rijndael.decrypt(value)
         end
       end
@@ -119,7 +119,7 @@ class ApplicationController < ActionController::Base
     def encrypt_single_helper(contact)
       rijndael = Rijndael::Base.new(session[:dek])
       contact.attributes.each do |name, value|
-        if Contact.encrypted_fields.include?(name)
+        if Contact.encrypted_fields.include?(name) && !value.nil? && value != ""
           contact[name] = rijndael.encrypt(value)
         end
       end
