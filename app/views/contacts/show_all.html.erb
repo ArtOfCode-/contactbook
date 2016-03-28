@@ -28,10 +28,10 @@
         <td><%= contact.city.truncate(15) %></td>
         <td><%= contact.phone.truncate(15) %></td>
         <td><%= contact.email.truncate(15) %></td>
-        <td><% if @contact.created_by == @current_user.id %>
+        <td><% if contact.created_by == @current_user.id %>
               <%= link_to 'Show', contact %>
             <% end %></td>
-        <td><% if @contact.created_by == @current_user.id %>
+        <td><% if contact.created_by == @current_user.id %>
               <%= link_to 'Edit', edit_contact_path(contact) %>
             <% end %></td>
         <td><%= link_to 'Delete', contact, :method => :delete, data: { :confirm => 'Are you sure?' } %></td>
