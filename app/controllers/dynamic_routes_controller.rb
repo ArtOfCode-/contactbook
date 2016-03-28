@@ -3,7 +3,7 @@ class DynamicRoutesController < ApplicationController
 
   def root
     if !@current_user.nil?
-      redirect_to contacts_path
+      redirect_to url_for(:controller => :sessions, :action => :home)
     else
       redirect_to url_for(:controller => :help_about, :action => :whats_this)
     end

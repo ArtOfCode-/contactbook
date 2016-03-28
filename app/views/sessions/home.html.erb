@@ -1,3 +1,15 @@
 <% @page_title = "ContactBook | Dashboard" %>
 <h1>Dashboard</h1>
 <p>logged in as <%= @current_user.username %></p>
+
+<% @notices.each do |notice| %>
+  <div class="site-notice">
+    <p><%= raw notice.text %></p>
+    <p class="notice-details">
+      Posted by
+      <%= notice.username %>
+      at
+      <%= notice.created_at %>
+    </p>
+  </div>
+<% end %>

@@ -13,3 +13,9 @@
   website software have access to your plain text password). Passwords are passed through a cryptographic hash system
   called bcrypt, which consists of mixing your password with a random string of characters, then performing a series of
   operations on it several thousand times to obfuscate the original.</p>
+
+<h3>Contact Details</h3>
+<p>Obviously, people's contact details are sensitive stuff that you'd prefer didn't get out if it could possibly be avoided.
+  All contact details you submit are encrypted before they're saved - no plain text contact details are ever stored in
+  the database. The encryption uses a 256-bit (32-character) key and the Rijndael AES algorithm. The administrators do
+  not have access to this key, so they can't see your contacts.</p>

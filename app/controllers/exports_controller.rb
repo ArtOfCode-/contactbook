@@ -1,16 +1,15 @@
 class ExportsController < ApplicationController
   before_filter :set_contact, :only => [:vcard]
+  before_filter :set_contacts, :only => [:json, :xml]
   before_filter :authenticate_user
   before_filter :verify_ownership, :only => [:vcard]
 
   def json
-    contacts = Contact.select("id, title, first, last, city, phone, email").where("created_by" => @current_user.id)
-    render :json => contacts
+    render :json => @contacts
   end
 
   def xml
-    contacts = Contact.select("id, title, first, last, city, phone, email").where("created_by" => @current_user.id)
-    render :xml => contacts
+    render :xml => @contacts
   end
 
   def vcard
@@ -28,6 +27,12 @@ class ExportsController < ApplicationController
   private
     def set_contact
       @contact = Contact.find(params[:id])
+      @contact = decrypt_contacts(@contact)
+    end
+
+    def set_contacts
+      @contacts = Contact.select("id, title, first, last, city, phone, email").where("created_by" => @current_user.id)
+      @contacts = decrypt_contacts(@contacts)
     end
 
     def verify_ownership

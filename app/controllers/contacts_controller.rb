@@ -1,19 +1,23 @@
 class ContactsController < ApplicationController
   before_filter :authenticate_user
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  before_action :check_ownership, except: [:index, :new, :create, :show_all]
+  before_action :decrypt_set_contact, only: [:show, :edit]
+  before_action :check_ownership, except: [:index, :new, :create, :show_all, :encrypt, :do_encrypt]
   before_action :verify_admin, only: [:show_all]
 
   # GET /contacts/all
   def show_all
     @contacts = Contact.joins("inner join users on contacts.created_by = users.id")
       .select("contacts.id, contacts.title, contacts.first, contacts.last, contacts.city, contacts.phone, contacts.email, users.username")
+    # Don't bother decrypting these contacts; administrators won't be able to decrypt everything because DEKs are based
+    # on passwords. Only some contacts (their own) would show in plain text.
   end
 
   # GET /contacts
   # GET /contacts.json
   def index
     @contacts = Contact.select("id, title, first, last, city, phone, email").where("created_by" => @current_user.id)
+    @contacts = decrypt_contacts(@contacts)
   end
 
   # GET /contacts/1
@@ -36,6 +40,8 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.created_by = @current_user.id
 
+    @contact = encrypt_contacts(@contact)
+
     respond_to do |format|
       if @contact.save
         format.html {
@@ -54,8 +60,20 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1
   # PATCH/PUT /contacts/1.json
   def update
+    # Because we're encrypting, just updating the old contact leaves a point of vulnerability at which the plaintext
+    # details are in the database. To avoid that, destroy the old record and replace it with a new one, which is
+    # encrypted before it ever hits the database.
+    old_contact = Contact.find(params[:id])
+    old_contact.destroy
+
+    @contact = Contact.new(contact_params)
+    @contact.id = params[:id]
+    @contact.created_by = @current_user.id
+
+    @contact = encrypt_contacts(@contact)
+
     respond_to do |format|
-      if @contact.update(contact_params)
+      if @contact.save
         format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
         format.json { render :show, status: :ok, location: @contact }
       else
@@ -75,10 +93,31 @@ class ContactsController < ApplicationController
     end
   end
 
+  def encrypt
+  end
+
+  def do_encrypt
+    @contacts = Contact.where(:created_by => @current_user.id, :is_encrypted => false)
+    puts "Found #{@contacts.count} contacts by user #{@current_user.id} with :is_encrypted => false"
+    @contacts.each do |contact|
+      contact = encrypt_contacts(contact)
+      contact.save
+    end
+    flash[:notice] = "Your contacts were successfully encrypted."
+    flash[:color] = "valid"
+    render :encrypt
+  end
+
+
+  # Methods that are specific to contacts operations.
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
       @contact = Contact.find(params[:id])
+    end
+
+    def decrypt_set_contact
+      @contact = decrypt_contacts(@contact)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -87,7 +126,6 @@ class ContactsController < ApplicationController
     end
 
     def check_ownership
-      puts "Checking ownership of contact..."
       if @contact.created_by != @current_user.id
         if !@current_user.is_admin
           respond_to do |format|

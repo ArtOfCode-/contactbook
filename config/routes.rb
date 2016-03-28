@@ -20,6 +20,14 @@ Rails.application.routes.draw do
   get 'users', to: 'users#index'
   get 'contacts/all', to: 'contacts#show_all'
 
+  get 'admin/notices', to: 'site_notices#index'
+  get 'admin/notices/new', to: 'site_notices#new'
+  post 'admin/notices/new', to: 'site_notices#create'
+  get 'admin/notices/:id/edit', to: 'site_notices#edit'
+  put 'admin/notices/:id/edit', to: 'site_notices#update'
+  patch 'admin/notices/:id/edit', to: 'site_notices#update'
+  delete 'admin/notices/:id', to: 'site_notices#destroy'
+
   # === EXPORTS ROUTES === #
   get 'exports/json', to: 'exports#json'
   get 'exports/xml', to: 'exports#xml'
@@ -38,7 +46,9 @@ Rails.application.routes.draw do
   get 'profile', to: 'sessions#profile'
   get 'settings', to: 'sessions#settings'
 
-  # === OBJECT RESOURCES === #
+  # === CONTACTS ROUTES === #
+  get 'contacts/encrypt', to: 'contacts#encrypt'
+  post 'contacts/encrypt', to: 'contacts#do_encrypt'
   resources :contacts
 
   # === SPECIAL ROUTES === #

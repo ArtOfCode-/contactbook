@@ -1,0 +1,21 @@
+<h1>Site Notices</h1>
+<p>These site notices are currently active, and will show on every user's dashboard.</p>
+
+<% @site_notices.each do |notice| %>
+  <div class="site-notice">
+    <p><%= raw notice.text %></p>
+    <p class="notice-details">
+      Posted by
+      <%= notice.created_by %>
+      at
+      <%= notice.created_at %>
+    </p>
+    <p>
+      <%= link_to "Edit", url_for(:controller => :site_notices, :action => :edit, :id => notice.id) %> |
+      <%= link_to "Delete", url_for(:controller => :site_notices, :action => :destroy, :id => notice.id),
+          :method => :delete, data: { :confirm => 'Are you sure?' } %>
+    </p>
+  </div>
+<% end %>
+
+<a href="/admin/notices/new">New Notice</a>
