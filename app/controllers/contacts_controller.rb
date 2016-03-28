@@ -98,6 +98,7 @@ class ContactsController < ApplicationController
 
   def do_encrypt
     @contacts = Contact.where(:created_by => @current_user.id, :is_encrypted => false)
+    puts "Found #{@contacts.count} contacts by user #{@current_user.id} with :is_encrypted => false"
     @contacts = encrypt_contacts(@contacts)
     @contacts.each do |contact|
       old_contact = Contact.find(contact.id)
