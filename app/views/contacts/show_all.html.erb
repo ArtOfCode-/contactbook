@@ -22,12 +22,12 @@
       <tr>
         <td><%= contact.id %></td>
         <td><%= contact.username %></td>
-        <td><%= contact.first %></td>
-        <td><%= contact.last %></td>
-        <td><%= contact.title %></td>
-        <td><%= contact.city %></td>
-        <td><%= contact.phone %></td>
-        <td><%= contact.email %></td>
+        <td><%= truncate(contact.first, 20) %></td>
+        <td><%= truncate(contact.last, 20) %></td>
+        <td><%= truncate(contact.title, 20) %></td>
+        <td><%= truncate(contact.city, 20) %></td>
+        <td><%= truncate(contact.phone, 20) %></td>
+        <td><%= truncate(contact.email, 20) %></td>
         <td><%= link_to 'Show', contact %></td>
         <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
         <td><%= link_to 'Delete', contact, :method => :delete, data: { :confirm => 'Are you sure?' } %></td>
