@@ -48,6 +48,7 @@ Rails.application.routes.draw do
 
   # === CONTACTS ROUTES === #
   get 'contacts/encrypt', to: 'contacts#encrypt'
+  post 'contacts/encrypt', to: 'contacts#do_encrypt'
   resources :contacts
 
   # === SPECIAL ROUTES === #
