@@ -99,14 +99,9 @@ class ContactsController < ApplicationController
   def do_encrypt
     @contacts = Contact.where(:created_by => @current_user.id, :is_encrypted => false)
     puts "Found #{@contacts.count} contacts by user #{@current_user.id} with :is_encrypted => false"
-    @contacts = encrypt_contacts(@contacts)
     @contacts.each do |contact|
-      old_contact = Contact.find(contact.id)
-      old_contact.destroy
-      puts "Found & destroyed old contact with ID=#{old_contact.id}"
-      contact.is_encrypted = true
+      contact = encrypt_contacts(contact)
       contact.save
-      puts "Created updated contact: #{contact.attributes}"
     end
     flash[:notice] = "Your contacts were successfully encrypted."
     flash[:color] = "valid"
