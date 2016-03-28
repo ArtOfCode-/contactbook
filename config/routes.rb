@@ -46,7 +46,8 @@ Rails.application.routes.draw do
   get 'profile', to: 'sessions#profile'
   get 'settings', to: 'sessions#settings'
 
-  # === OBJECT RESOURCES === #
+  # === CONTACTS ROUTES === #
+  get 'contacts/encrypt', to: 'contacts#encrypt'
   resources :contacts
 
   # === SPECIAL ROUTES === #
