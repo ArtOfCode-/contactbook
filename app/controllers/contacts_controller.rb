@@ -97,7 +97,13 @@ class ContactsController < ApplicationController
   end
 
   def do_encrypt
-
+    @contacts = Contact.where(:created_by => @current_user.id, :is_encrypted => false)
+    @contacts = encrypt_contacts(@contacts)
+    @contacts.each do |contact|
+      contact.save!
+    end
+    flash[:notice] = "Your contacts were successfully encrypted."
+    render :encrypt
   end
 
 
