@@ -1,0 +1,13 @@
+<h1>Encrypt Contacts</h1>
+<p>Encryption of new contacts was added on March 27, 2016. This means that any contacts you create will now be encrypted
+  before they are saved - meaning no plain text contact details ever get stored in the database for new contacts.</p>
+<p>Now I'm widening the scope of this feature to existing contacts too. However, I don't have access to your decryption
+  key, so this needs action from you to complete. There are a few simple steps you need to follow to add encryption to
+  all your existing contacts.</p>
+<ul>
+  <li>Log out, then log back in again. This is to refresh your session - by doing this, the site can create your
+    decryption key, which it will use to encrypt all your contacts.</li>
+  <li>Click the "Encrypt Contacts Now" button below. This performs the encryption. Depending on how many contacts you
+    have created, this may take up to a minute - please be patient.</li>
+</ul>
+<%= button_to "Encrypt Contacts Now", :method => :post, :data => {:confirm => "Start encrypting contacts?"} %>

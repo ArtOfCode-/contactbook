@@ -93,6 +93,13 @@ class ContactsController < ApplicationController
     end
   end
 
+  def encrypt
+  end
+
+  def do_encrypt
+
+  end
+
 
   # Methods that are specific to contacts operations.
   private
