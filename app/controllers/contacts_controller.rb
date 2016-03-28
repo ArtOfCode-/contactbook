@@ -8,7 +8,7 @@ class ContactsController < ApplicationController
   # GET /contacts/all
   def show_all
     @contacts = Contact.joins("inner join users on contacts.created_by = users.id")
-      .select("contacts.id, contacts.title, contacts.first, contacts.last, contacts.city, contacts.phone, contacts.email, users.username")
+      .select("contacts.created_by, contacts.id, contacts.title, contacts.first, contacts.last, contacts.city, contacts.phone, contacts.email, users.username")
     # Don't bother decrypting these contacts; administrators won't be able to decrypt everything because DEKs are based
     # on passwords. Only some contacts (their own) would show in plain text.
   end
