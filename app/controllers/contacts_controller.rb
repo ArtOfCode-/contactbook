@@ -102,8 +102,10 @@ class ContactsController < ApplicationController
     @contacts.each do |contact|
       old_contact = Contact.find(contact.id)
       old_contact.destroy
+      puts "Found & destroyed old contact with ID=#{old_contact.id}"
       contact.is_encrypted = true
-      contact.save!
+      contact.save
+      puts "Created updated contact: #{contact.attributes}"
     end
     flash[:notice] = "Your contacts were successfully encrypted."
     flash[:color] = "valid"
