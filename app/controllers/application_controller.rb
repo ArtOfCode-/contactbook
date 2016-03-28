@@ -57,4 +57,28 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def decrypt_contacts(contacts)
+    authenticate_user
+    if session[:dek].nil?
+      flash[:notice] = "There was an error with your session; please log in again."
+      flash[:color] = "invalid"
+      flash[:preserve_notice] = true
+      redirect_to url_for(:controller => :sessions, :action => :logout)
+      return
+    end
+    return decrypt_contacts_helper(contacts)
+  end
+
+  def encrypt_contacts(contacts)
+    authenticate_user
+    if session[:dek].nil?
+      flash[:notice] = "There was an error with your session; please log in again."
+      flash[:color] = "invalid"
+      flash[:preserve_notice] = true
+      redirect_to url_for(:controller => :sessions, :action => :logout)
+      return
+    end
+    return encrypt_contacts_helper(contacts)
+  end
 end
