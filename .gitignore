@@ -20,3 +20,5 @@ Gemfile.lock
 
 config/database.yml
 config/secrets.yml
+
+config/initializers/smtp_settings.rb
