@@ -29,6 +29,6 @@
 </p>
 
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Delete', contact, :method => :delete, data: { :confirm => 'Are you sure?' } %> |
+<%= link_to 'Delete', @contact, :method => :delete, data: { :confirm => 'Are you sure?' } %> |
 <%= link_to 'Back', contacts_path %> |
 <a href="/exports/vcf/<%= @contact.id %>">Export as vCard</a>
