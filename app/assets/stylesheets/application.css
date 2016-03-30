@@ -11,8 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
- *= require_self
  *= require datatables.css
+ *= require_self
  */
 
 * {

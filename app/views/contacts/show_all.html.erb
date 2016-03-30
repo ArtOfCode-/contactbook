@@ -5,14 +5,14 @@
     <tr>
       <th>ID</th>
       <th>Owner</th>
-      <th>First</th>
-      <th>Last</th>
-      <th>Title</th>
-      <th>City</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
+      <th class="expanded-view">First</th>
+      <th class="expanded-view">Last</th>
+      <th class="expanded-view">Title</th>
+      <th class="expanded-view">City</th>
+      <th class="expanded-view">Phone</th>
+      <th class="expanded-view">Email</th>
+      <th class="expanded-view"></th>
+      <th class="expanded-view"></th>
       <th></th>
     </tr>
   </thead>
@@ -22,16 +22,16 @@
       <tr>
         <td><%= contact.id %></td>
         <td><%= contact.username %></td>
-        <td><%= contact.first.truncate(15) %></td>
-        <td><%= contact.last.truncate(15) %></td>
-        <td><%= contact.title.truncate(15) %></td>
-        <td><%= contact.city.truncate(15) %></td>
-        <td><%= contact.phone.truncate(15) %></td>
-        <td><%= contact.email.truncate(15) %></td>
-        <td><% if contact.created_by == @current_user.id %>
+        <td class="expanded-view"><%= contact.first.truncate(15) %></td>
+        <td class="expanded-view"><%= contact.last.truncate(15) %></td>
+        <td class="expanded-view"><%= contact.title.truncate(15) %></td>
+        <td class="expanded-view"><%= contact.city.truncate(15) %></td>
+        <td class="expanded-view"><%= contact.phone.truncate(15) %></td>
+        <td class="expanded-view"><%= contact.email.truncate(15) %></td>
+        <td class="expanded-view"><% if contact.created_by == @current_user.id %>
               <%= link_to 'Show', contact %>
             <% end %></td>
-        <td><% if contact.created_by == @current_user.id %>
+        <td class="expanded-view"><% if contact.created_by == @current_user.id %>
               <%= link_to 'Edit', edit_contact_path(contact) %>
             <% end %></td>
         <td><%= link_to 'Delete', contact, :method => :delete, data: { :confirm => 'Are you sure?' } %></td>

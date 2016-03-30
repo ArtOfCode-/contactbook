@@ -5,13 +5,13 @@
     <tr>
       <th>First</th>
       <th>Last</th>
-      <th>Title</th>
-      <th>City</th>
-      <th>Phone</th>
-      <th>Email</th>
+      <th class="expanded-view">Title</th>
+      <th class="expanded-view">City</th>
+      <th class="expanded-view">Phone</th>
+      <th class="expanded-view">Email</th>
       <th></th>
-      <th></th>
-      <th></th>
+      <th class="expanded-view"></th>
+      <th class="expanded-view"></th>
     </tr>
   </thead>
 
@@ -20,13 +20,13 @@
       <tr>
         <td><%= contact.first.truncate(15) %></td>
         <td><%= contact.last.truncate(15) %></td>
-        <td><%= contact.title.truncate(15) %></td>
-        <td><%= contact.city.truncate(15) %></td>
-        <td><%= contact.phone.truncate(15) %></td>
-        <td><%= contact.email.truncate(15) %></td>
+        <td class="expanded-view"><%= contact.title.truncate(15) %></td>
+        <td class="expanded-view"><%= contact.city.truncate(15) %></td>
+        <td class="expanded-view"><%= contact.phone.truncate(15) %></td>
+        <td class="expanded-view"><%= contact.email.truncate(15) %></td>
         <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-        <td><%= link_to 'Delete', contact, :method => :delete, data: { :confirm => 'Are you sure?' } %></td>
+        <td class="expanded-view"><%= link_to 'Edit', edit_contact_path(contact) %></td>
+        <td class="expanded-view"><%= link_to 'Delete', contact, :method => :delete, data: { :confirm => 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
