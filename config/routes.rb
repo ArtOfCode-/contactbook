@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'sessions#home'
   get 'profile', to: 'sessions#profile'
   get 'settings', to: 'sessions#settings'
+  get 'users/confirm', to: 'users#confirm'
 
   # === CONTACTS ROUTES === #
   get 'contacts/encrypt', to: 'contacts#encrypt'
