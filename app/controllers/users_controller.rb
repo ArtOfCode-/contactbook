@@ -33,17 +33,19 @@ class UsersController < ApplicationController
         @current_user.save
         flash[:notice] = "Your account has been confirmed."
         flash[:color] = "valid"
-        render {}
+        render :template => 'contacts/index'
       else
         flash[:notice] = "This confirmation token has expired; a new token has been emailed to you."
         flash[:color] = "invalid"
         @current_user.confirmation_token = Digest::SHA2.new(256).hexdigest("#{@user.created_at}#{@user.username}#{Time.now}")
         @current_user.save
         UserMailer.confirm(@current_user, @host).deliver_later
+        render :template => 'sessions/home'
       end
     else
       flash[:notice] = "This confirmation token is invalid."
       flash[:color] = "invalid"
+      render :template => 'sessions#home'
     end
   end
 
