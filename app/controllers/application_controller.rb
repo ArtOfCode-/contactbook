@@ -137,4 +137,5 @@ class ApplicationController < ActionController::Base
 
     def set_host
       @host = request.host
+    end
 end
