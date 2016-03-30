@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_filter :set_host
+
   before_filter :check_login_status
   after_filter :clear_notice
 
@@ -132,4 +134,7 @@ class ApplicationController < ActionController::Base
       end
       return contact
     end
+
+    def set_host
+      @host = request.host
 end

@@ -1,13 +1,7 @@
 class UserMailer < ApplicationMailer
-
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.confirm.subject
-  #
-  def confirm
-    @greeting = "Hi"
-
+  def confirm(user, url_base)
+    @user = user
+    @url = "http://#{url_base}/users/confirm?token=#{user.confirmation_token}"
     mail to: "to@example.org"
   end
 end
