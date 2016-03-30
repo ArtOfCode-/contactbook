@@ -82,6 +82,13 @@ class ApplicationController < ActionController::Base
       return encrypt_contacts_helper(contacts)
     end
 
+    def render_403
+      respond_to do |format|
+        format.html { render(:file => File.join(Rails.root, 'public/403'), :formats => [:html], :status => 403) }
+        format.json { head :forbidden }
+      end
+    end
+
 
   private
     def decrypt_contacts_helper(contacts)

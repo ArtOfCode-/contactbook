@@ -5,6 +5,8 @@ class ContactsController < ApplicationController
   before_action :decrypt_set_contact, only: [:show, :edit]
   before_action :verify_admin, only: [:show_all]
 
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_403
+
   # GET /contacts/all
   def show_all
     @contacts = Contact.joins("inner join users on contacts.created_by = users.id")
@@ -128,10 +130,7 @@ class ContactsController < ApplicationController
 
     def check_ownership
       if @contact.created_by != @current_user.id
-        respond_to do |format|
-          format.html { render(:file => File.join(Rails.root, 'public/403'), :formats => [:html], :status => 403) }
-          format.json { head :forbidden }
-        end
+        render_403
       end
     end
 end
