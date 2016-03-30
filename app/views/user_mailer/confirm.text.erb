@@ -1,3 +1,7 @@
-UserMailer#confirm
+Welcome!
+========
 
-<%= @greeting %>, find me in app/views/user_mailer/confirm.text.erb
+Welcome to Contactbook, <%= @user.username %>. There's one more step you need to take for your account to be fully
+activated - please paste the link below into your browser's address bar to confirm your account.
+
+Confirm Account: <%= @url %>
