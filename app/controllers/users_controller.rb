@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     else
       flash[:notice] = "This confirmation token is invalid."
       flash[:color] = "invalid"
-      render :template => 'sessions#home'
+      render :template => 'sessions/home'
     end
   end
 
