@@ -5,9 +5,10 @@
     <tr>
       <th>ID</th>
       <th>Username</th>
-      <th>Email</th>
-      <th>Admin</th>
-      <th>Created</th>
+      <th class="expanded-view">Email</th>
+      <th class="expanded-view">Admin</th>
+      <th class="expanded-view">Confirmed</th>
+      <th class="expanded-view">Created</th>
     </tr>
   </thead>
 
@@ -16,9 +17,10 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.username %></td>
-        <td><%= user.email %></td>
-        <td><%= user.is_admin %></td>
-        <td><%= user.created_at %></td>
+        <td class="expanded-view"><%= user.email %></td>
+        <td class="expanded-view"><%= user.is_admin %></td>
+        <td class="expanded-view"><%= user.is_confirmed %></td>
+        <td class="expanded-view"><%= user.created_at %></td>
       </tr>
     <% end %>
   </tbody>
