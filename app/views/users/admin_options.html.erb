@@ -2,7 +2,7 @@
 <h3>User '<%= @user.username %>' (Users.ID = <%= @user.id %>)</h3>
 
 <p><strong>Confirmed: </strong><%= @user.is_confirmed ? 'Yes' : "No (token #{@user.confirmation_token})" %></p>
-<% form_for @user, url_for(:controller => :users, :action => :admin_edit) do |f| %>
+<% form_for @user, url_for(:controller => :users, :action => :admin_edit, :id => @user.id) do |f| %>
   <%= f.select 'Confirmed', [['Yes', true], ['No', false]] %>
   <%= f.submit 'Update' %>
 <% end %>
