@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :save_login_state, :only => [:new, :create]
-  before_action :set_contact, :only => [:admin_options, :admin_edit]
+  before_action :set_user, :only => [:admin_options, :admin_edit]
   before_action :verify_admin, :only => [:index, :admin_options, :admin_edit]
   before_action :authenticate_user, :only => [:confirm]
 
@@ -62,11 +62,15 @@ class UsersController < ApplicationController
   end
 
   private
-  def user_params
-    params.require(:user).permit(:username, :email, :password, :confirmation)
-  end
+    def user_params
+      params.require(:user).permit(:username, :email, :password, :confirmation)
+    end
 
-  def admin_edit_params
-    params.require(:user).permit(:is_confirmed, :is_admin, :username)
-  end
+    def admin_edit_params
+      params.require(:user).permit(:is_confirmed, :is_admin, :username)
+    end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
 end
