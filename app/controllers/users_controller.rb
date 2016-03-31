@@ -48,6 +48,7 @@ class UsersController < ApplicationController
 
   def admin_options
     @user = User.find(params[:id])
+    @user.update(admin_edit_params)
   end
 
   def admin_edit
@@ -57,5 +58,9 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :confirmation)
+  end
+
+  def admin_edit_params
+    params.require(:user).permit(:is_confirmed, :is_admin, :username)
   end
 end
