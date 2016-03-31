@@ -3,7 +3,7 @@
 
 <div class="boxout-row">
   <div class="boxout">
-    <p><strong>Confirmed: </strong><%= @user.is_confirmed ? 'Yes' : "No (token #{@user.confirmation_token})" %></p>
+    <p><strong>Confirmed: </strong><%= @user.is_confirmed ? 'Yes' : "No (token #{@user.confirmation_token.truncate(13)})" %></p>
     <%= form_for @user, url: { :action => :admin_edit } do |f| %>
       <%= f.select :is_confirmed, options_for_select([['Yes', true], ['No', false]]) %>
       <%= f.submit 'Update' %>
