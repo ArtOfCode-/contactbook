@@ -155,6 +155,18 @@ textarea {
   margin: 10px 0;
 }
 
+.button-danger, .button-danger:visited {
+  background: #ed260b;
+  border: 1px solid #bc0409;
+  box-shadow: inset 0 1px 0 #ea4669;
+}
+
+.button-danger:hover, .button-danger:active {
+  background: #c90c0a;
+  order: 1px solid #bc0409;
+  box-shadow: inset 0 1px 0 #ea4669;
+}
+
 .boxout-row {
   clear: both;
 }
