@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   delete 'admin/notices/:id', to: 'site_notices#destroy'
 
   get 'admin/users/:id', to: 'users#admin_options'
+  post 'admin/users/:id/edit', to: 'users#admin_edit'
 
   # === EXPORTS ROUTES === #
   get 'exports/json', to: 'exports#json'

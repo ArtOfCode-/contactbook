@@ -50,6 +50,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def admin_edit
+
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :confirmation)
