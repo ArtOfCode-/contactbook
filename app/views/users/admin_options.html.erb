@@ -9,5 +9,12 @@
       <%= f.submit 'Update' %>
     <% end %>
   </div>
+  <div class="boxout">
+    <p><strong>Admin: </strong><%= @user.is_admin ? 'Yes' : 'No' %></p>
+    <%= form_for @user, url: { :action => :admin_edit } do |f| %>
+      <%= f.select :is_admin, options_for_select([['Yes', true], ['No', false]]) %>
+      <%= f.submit 'Update' %>
+    <% end %>
+  </div>
 </div>
 <div class="boxout-row"></div>
