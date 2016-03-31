@@ -154,3 +154,14 @@ textarea {
   transition: all 0.2s ease;
   margin: 10px 0;
 }
+
+.boxout-row {
+  clear: both;
+}
+
+.boxout {
+  float: left;
+  padding: 10px;
+  border: 1px solid #aaa;
+  margin: 5px;
+}
