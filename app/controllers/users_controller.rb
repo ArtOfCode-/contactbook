@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :save_login_state, :only => [:new, :create]
-  before_action :verify_admin, :only => [:index, :admin_options]
+  before_action :set_contact, :only => [:admin_options, :admin_edit]
+  before_action :verify_admin, :only => [:index, :admin_options, :admin_edit]
   before_action :authenticate_user, :only => [:confirm]
 
   def new
@@ -47,12 +48,17 @@ class UsersController < ApplicationController
   end
 
   def admin_options
-    @user = User.find(params[:id])
-    @user.update(admin_edit_params)
   end
 
   def admin_edit
-
+    if @user.update(admin_edit_params)
+      flash[:notice] = "User was successfully updated."
+      flash[:color] = "valid"
+    else
+      flash[:notice] = "User was not updated."
+      flash[:color] = "invalid"
+    end
+    render :admin_options
   end
 
   private
