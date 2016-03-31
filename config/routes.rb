@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   patch 'admin/notices/:id/edit', to: 'site_notices#update'
   delete 'admin/notices/:id', to: 'site_notices#destroy'
 
+  get 'admin/users/:id', to: 'users#admin_options'
+
   # === EXPORTS ROUTES === #
   get 'exports/json', to: 'exports#json'
   get 'exports/xml', to: 'exports#xml'

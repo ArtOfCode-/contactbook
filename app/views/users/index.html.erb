@@ -9,6 +9,7 @@
       <th class="expanded-view">Admin</th>
       <th class="expanded-view">Confirmed</th>
       <th class="expanded-view">Created</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -21,6 +22,7 @@
         <td class="expanded-view"><%= user.is_admin %></td>
         <td class="expanded-view"><%= user.is_confirmed %></td>
         <td class="expanded-view"><%= user.created_at %></td>
+        <td><a href="/admin/users/<%= user.id %>">Options</a></td>
       </tr>
     <% end %>
   </tbody>

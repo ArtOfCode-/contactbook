@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :save_login_state, :only => [:new, :create]
-  before_action :verify_admin, :only => [:index]
+  before_action :verify_admin, :only => [:index, :admin_options]
   before_action :authenticate_user, :only => [:confirm]
 
   def new
@@ -44,6 +44,10 @@ class UsersController < ApplicationController
       flash[:notice] = "This confirmation token is invalid."
       flash[:color] = "invalid"
     end
+  end
+
+  def admin_options
+    @user = User.find(params[:id])
   end
 
   private
