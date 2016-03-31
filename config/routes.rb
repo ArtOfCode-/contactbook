@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get 'admin/users/:id', to: 'users#admin_options'
   post 'admin/users/:id/edit', to: 'users#admin_edit'
   patch 'admin/users/:id/edit', to: 'users#admin_edit'
+  delete 'admin/users/:id', to: 'users#admin_delete'
 
   # === EXPORTS ROUTES === #
   get 'exports/json', to: 'exports#json'

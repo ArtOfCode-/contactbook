@@ -17,4 +17,15 @@
     <% end %>
   </div>
 </div>
+<div class="boxout-row">
+  <div class="boxout">
+    <h4>Delete User</h4>
+    <p><strong>Be careful!</strong> This cannot be undone!</p>
+    <%= form_tag { :action => :admin_delete }, :method => :delete do %>
+      <%= label_tag :dc, "Also delete all content" %>
+      <%= check_box_tag :dc %>
+      <%= submit_tag "Delete", class: 'button-danger' %>
+    <% end %>
+  </div>
+</div>
 <div class="boxout-row"></div>

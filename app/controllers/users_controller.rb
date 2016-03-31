@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :save_login_state, :only => [:new, :create]
   before_action :set_user, :only => [:admin_options, :admin_edit]
-  before_action :verify_admin, :only => [:index, :admin_options, :admin_edit]
+  before_action :verify_admin, :only => [:index, :admin_options, :admin_edit, :admin_delete]
   before_action :authenticate_user, :only => [:confirm]
 
   def new
@@ -59,6 +59,10 @@ class UsersController < ApplicationController
       flash[:color] = "invalid"
     end
     render :admin_options
+  end
+
+  def admin_delete
+
   end
 
   private
