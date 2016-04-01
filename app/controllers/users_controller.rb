@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   end
 
   def admin_delete
-    if !params[:dc].nil? && params[:dc] == true
+    if !params[:dc].nil? && params[:dc] == 1
       posts = Post.where(:created_by => @user.id)
       posts.each do |post|
         post.destroy
