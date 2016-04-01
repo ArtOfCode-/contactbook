@@ -17,8 +17,8 @@ Rails.application.routes.draw do
 
   # === ADMIN ROUTES === #
   get 'admin', to: 'admin#index'
-  get 'users', to: 'users#index'
-  get 'contacts/all', to: 'contacts#show_all'
+  get 'admin/users', to: 'users#index'
+  get 'admin/contacts', to: 'contacts#show_all'
 
   get 'admin/notices', to: 'site_notices#index'
   get 'admin/notices/new', to: 'site_notices#new'
