@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :save_login_state, :only => [:new, :create]
-  before_action :set_user, :only => [:admin_options, :admin_edit]
+  before_action :set_user, :only => [:admin_options, :admin_edit, :admin_delete]
   before_action :verify_admin, :only => [:index, :admin_options, :admin_edit, :admin_delete]
   before_action :authenticate_user, :only => [:confirm]
 
@@ -62,7 +62,17 @@ class UsersController < ApplicationController
   end
 
   def admin_delete
-
+    if !params[:dc].nil? && params[:dc] == true
+      posts = Post.where(:created_by => @user.id)
+      posts.each do |post|
+        post.destroy
+      end
+      content = true
+    end
+    @user.destroy
+    flash[:notice] = "User #{content ? 'and content ' : ''}successfully destroyed."
+    flash[:color] = "valid"
+    render :admin_options
   end
 
   private
