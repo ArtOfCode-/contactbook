@@ -71,7 +71,7 @@ class UsersController < ApplicationController
       content = true
     end
     @user.destroy
-    redirect_to :index
+    redirect_to url_for(:controller => :users, :action => :index)
     flash[:notice] = "User #{content ? 'and content ' : ''}successfully destroyed."
     flash[:color] = "valid"
   end
