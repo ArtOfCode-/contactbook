@@ -72,7 +72,7 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:notice] = "User #{content ? 'and content ' : ''}successfully destroyed."
     flash[:color] = "valid"
-    render :admin_options
+    render :index
   end
 
   private
