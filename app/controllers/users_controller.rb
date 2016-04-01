@@ -63,16 +63,17 @@ class UsersController < ApplicationController
   end
 
   def admin_delete
+    content = ""
     if !params[:dc].nil? && params[:dc] == 1
       posts = Post.where(:created_by => @user.id)
       posts.each do |post|
         post.destroy
       end
-      content = true
+      content = "and content "
     end
     @user.destroy
     redirect_to url_for(:controller => :users, :action => :index)
-    flash[:notice] = "User #{content ? 'and content ' : ''}successfully destroyed."
+    flash[:notice] = "User #{content}successfully destroyed."
     flash[:color] = "valid"
   end
 
